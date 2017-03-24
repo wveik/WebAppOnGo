@@ -3,10 +3,16 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"html/template"
 )
 
 func indexHandler (w http.ResponseWriter, r *http.Request)  {
-	fmt.Fprintf(w, "<h1>Hello World</h1>")
+	t, err := template.ParseFiles("templates/index.html")
+	if err != nil{
+		fmt.Fprintf(w, err.Error())
+	}
+	
+	t.ExecuteTemplate(w, "index", nil)
 }
 
 func main()  {
@@ -15,5 +21,4 @@ func main()  {
 	http.HandleFunc("/", indexHandler)
 
 	http.ListenAndServe(":3000", nil)
-
 }
