@@ -1,3 +1,7 @@
+{{ define "write" }}
+
+{{ template "header" }}
+
 <div class="row">
 	<div class="col-xs-4">
 	</div>
@@ -20,3 +24,7 @@
 			<a href="/delete?id={{.Id}}">Delete</a>
 	</div>
 </div>
+
+{{ template "footer" }}
+
+{{ end }}
