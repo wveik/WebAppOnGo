@@ -24,12 +24,21 @@ func writeHandler(w http.ResponseWriter, r *http.Request)  {
 	t.ExecuteTemplate(w, "write", nil)
 }
 
+func savePostHandler(w http.ResponseWriter, r *http.Request)  {
+	/*id := r.FormValue("id")
+	title := r.FormValue("title")
+	content := r.FormValue("content")
+*/
+
+}
+
 func main()  {
 	fmt.Println("Listening on port :3000")
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/write", writeHandler)
+	http.HandleFunc("/SavePost", savePostHandler)
 
 	http.ListenAndServe(":3000", nil)
 }
